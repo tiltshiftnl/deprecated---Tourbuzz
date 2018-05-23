@@ -31,7 +31,7 @@ $app->get('/:y/:m/:d', function ($y, $m, $d) use ($app, $analytics, $image_api) 
     });
 
     usort($berichten, function ($b1, $b2) {
-        return $b1['important'] < $b2['important'];
+        return $b1['important'] > $b2['important'];
     });
 
     $N = date('N', strtotime("{$y}-{$m}-{$d}"));

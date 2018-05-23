@@ -13,7 +13,7 @@
                 <p>{{ __('Geen berichten. Goede rit toegewenst!') }} <img src="/img/geen-berichten.png" style="width: 32px; height: 32px; vertical-align: middle"></p>
             {% endif %}
 
-            {% for record in berichten %}
+            {% for record in berichten|reverse %}
 
                 {% set title %}
                     {% if lang == 'nl' %}{{ record.title }}{% endif %}
