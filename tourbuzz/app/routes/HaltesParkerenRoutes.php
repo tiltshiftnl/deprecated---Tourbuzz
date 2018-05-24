@@ -9,11 +9,12 @@
  * Haltes en parkeerplaatsen
  */
 $app->get('/haltes-parkeerplaatsen', function () use ($app, $analytics) {
-    die("Haltes en parkeerplaatsen zijn tijdelijk niet beschikbaar. Onze excuses voor het ongemak, we werken aan een oplossing.");
+
     $apiResponse = $app->api->get("haltes");
     $haltes = $apiResponse->body['haltes'];
 
     $apiResponse = $app->api->get("parkeerplaatsen");
+    //die(print_r($apiResponse));
     $parkeerplaatsen = $apiResponse->body['parkeerplaatsen'];
 
     // Amsterdam Center Point.
@@ -30,7 +31,7 @@ $app->get('/haltes-parkeerplaatsen', function () use ($app, $analytics) {
         "center" => $center,
     ];
 
-    //$haltes = locationItemsToMap($haltes, $mapOptions, true);
+    $haltes = locationItemsToMap($haltes, $mapOptions, true);
 
     $data = [
         "m" => date('m'),
@@ -268,7 +269,7 @@ $app->get('/parkeerplaatsen/:slug', function ($slug) use ($app, $analytics) {
         "center" => $center,
     ];
 
-    //$parkeerplaatsen = locationItemsToMap($parkeerplaatsen, $mapOptions);
+    $parkeerplaatsen = locationItemsToMap($parkeerplaatsen, $mapOptions);
 
     // Vialis data
     //$beschikbaar = file_get_contents('http://opd.it-t.nl/data/amsterdam/ParkingLocation.json');
