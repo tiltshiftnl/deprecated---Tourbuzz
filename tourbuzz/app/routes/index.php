@@ -93,7 +93,7 @@ $app->get('/:y/:m/:d/details', function ($y, $m, $d) use ($app, $analytics, $ima
     });
 
     usort($berichten, function ($b1, $b2) {
-        return $b1['important'] < $b2['important'];
+        return $b1['important'] > $b2['important'];
     });
 
     $N = date('N', strtotime("{$y}-{$m}-{$d}"));
